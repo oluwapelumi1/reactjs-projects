@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 .wrapper {
+=======
+
+.acc-wrapper {
+>>>>>>> 3c3c3f53de66c8642f4cd6cb374ab28d8d04bd3b
     display: flex;
     height: 100vh;
     width: 100vw;
@@ -8,7 +13,11 @@
     gap: 20px;
   }
   
+<<<<<<< HEAD
   .wrapper button {
+=======
+  .acc-wrapper button {
+>>>>>>> 3c3c3f53de66c8642f4cd6cb374ab28d8d04bd3b
       padding: 10px 20px;
       background: #614101;
       color: #fff;
@@ -35,7 +44,11 @@
     cursor: pointer;
   }
   
+<<<<<<< HEAD
   .content {
+=======
+  .acc-content {
+>>>>>>> 3c3c3f53de66c8642f4cd6cb374ab28d8d04bd3b
     color: #ffffff;
     height: auto;
   }
