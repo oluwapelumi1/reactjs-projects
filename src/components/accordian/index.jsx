@@ -8,30 +8,57 @@ import "./styles.css";
 export default function Accordian() {
   const [selected, setSelected] = useState(null);
   const [enableMultiSelection, setEnableMultiSelection] = useState(false);
-  const
+  const [Multiple, setMultiple] = useState([]);
 
   function handleSingleSelection(getCurrentId) {
     console.log(getCurrentId);
     setSelected(getCurrentId === selected ? null : getCurrentId);
   }
-  console.log(selected);
+
+  function handleMultiSelection(getCurrentId) {
+    let cpymultiple = [...Multiple];
+    const findIndexOfCurrentId = cpymultiple.indexOf(getCurrentId);
+    console.log(findIndexOfCurrentId);
+    if (findIndexOfCurrentId === -1) {
+      cpymultiple.push(getCurrentId);
+    } else {
+      cpymultiple.splice(findIndexOfCurrentId, 1);
+    }
+    setMultiple(cpymultiple);
+  }
+
+  console.log(selected, Multiple);
   return (
     <div className="wrapper">
-      <button>Enable Mulit Selection</button>
+      <button onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
+        Enable Mulit Selection
+      </button>
       <div className="accordian">
         {data && data.length > 0 ? (
           data.map((dataItem) => (
             <div className="item">
               <div
-                onClick={() => handleSingleSelection(dataItem.id)}
+                onClick={
+                  enableMultiSelection
+                    ? () => handleMultiSelection(dataItem.id)
+                    : () => handleSingleSelection(dataItem.id)
+                }
                 className="title"
               >
                 <h3>{dataItem.question}</h3>
                 <span>+</span>
               </div>
-              {selected === dataItem.id ? (
+              {
+                enableMultiSelection ?
+                Multiple.indexOf(dataItem.id) !== -1 &&
+                  <div className="content">{dataItem.answer}</div>:
+                  selected === dataItem.id &&
+                  <div className="content">{dataItem.answer}</div>
+              }
+              {/* {selected === dataItem.id ||
+              Multiple.indexOf(dataItem.id) !== -1 ? (
                 <div className="content">{dataItem.answer}</div>
-              ) : null}
+              ) : null} */}
             </div>
           ))
         ) : (
