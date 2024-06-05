@@ -29,7 +29,7 @@ export default function Accordian() {
 
   console.log(selected, Multiple);
   return (
-    <div className="wrapper">
+    <div  className="wrapper">
       <button onClick={() => setEnableMultiSelection(!enableMultiSelection)}>
         Enable Mulit Selection
       </button>
